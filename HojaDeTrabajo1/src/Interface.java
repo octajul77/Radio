@@ -7,5 +7,5 @@
  *
  */
 public interface Interface {
-	public void EncenderApagar(); 
+	public void EncenderApagar();  
 }
