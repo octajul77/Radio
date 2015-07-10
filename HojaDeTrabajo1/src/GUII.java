@@ -8,6 +8,8 @@ import javax.swing.JToggleButton;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GUII extends JFrame {
 
@@ -34,6 +36,8 @@ public class GUII extends JFrame {
 	 * Create the frame.
 	 */
 	public GUII() {
+		
+		Radio nRadio = new Radio();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 650, 252);
 		contentPane = new JPanel();
@@ -42,6 +46,12 @@ public class GUII extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnONOFF = new JButton("ON/OFF");
+		btnONOFF.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				nRadio.EncenderApagar();
+			}
+		});
 		btnONOFF.setBounds(24, 11, 89, 23);
 		contentPane.add(btnONOFF);
 		
