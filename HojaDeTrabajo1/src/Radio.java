@@ -1,15 +1,33 @@
 public class Radio implements InterfazRadio {
+	private boolean Encendido;
+	private String Frec;
 	public Radio() {
 		// TODO Auto-generated constructor stub
+		Encendido = false;
+		Frec = "AM";
 	}
 	public void EncenderApagar()
 	{
+		if (!Encendido) 
+		{
+			Encendido = true;
+		} else {
+			Encendido = false;
+		}
 		System.out.println("Encender Apagar");
+		System.out.println(Encendido);
 	};
 	
 	public void CambiarFrec()
 	{
+		if(Frec == "AM")
+		{
+			Frec = "FM";
+		} else {
+			Frec = "AM";
+		}
 		System.out.println("Cambiar Frec");
+		System.out.println("La Frecuencia es: "+Frec);
 	};
 	
 	public void CargarEmisora(double emisora)
@@ -43,4 +61,43 @@ public class Radio implements InterfazRadio {
 	{
 		System.out.println("Bajar Volumen");
 	};
+	
+	public boolean getEncendido()
+	{
+		return Encendido;
+	}
+	
+	public String getFrec()
+	{
+		return Frec;
+	}
+	public int getCONST_CAMBIO_AM()
+	{
+		return CONST_CAMBIO_AM; 
+	}
+	
+	public double CONST_CAMBIO_FM()
+	{
+		return CONST_CAMBIO_FM;
+	}
+	
+	public int MAX_AM()
+	{
+		return MAX_AM;
+	}
+	
+	public int MIN_AM()
+	{
+		return MIN_AM;
+	}
+	
+	public double MAX_FM()
+	{
+		return MAX_FM;
+	}
+	
+	public double MIN_FM()
+	{
+		return MIN_FM;
+	}
 }

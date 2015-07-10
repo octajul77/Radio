@@ -39,7 +39,7 @@ public class GUII extends JFrame {
 		
 		Radio nRadio = new Radio();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 650, 252);
+		setBounds(100, 100, 650, 260);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -56,59 +56,78 @@ public class GUII extends JFrame {
 		contentPane.add(btnONOFF);
 		
 		JButton btnAmfm = new JButton("AM/FM");
+		btnAmfm.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				nRadio.CambiarFrec();
+				txtRadio.setText(nRadio.getFrec());
+			}
+		});
 		btnAmfm.setBounds(514, 11, 89, 23);
 		contentPane.add(btnAmfm);
 		
 		JButton buttonLtoR = new JButton("--->");
+		buttonLtoR.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				nRadio.AdelantarEmisora();
+			}
+		});
 		buttonLtoR.setBounds(514, 132, 89, 23);
 		contentPane.add(buttonLtoR);
 		
 		JButton buttonRtoL = new JButton("<---");
+		buttonRtoL.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				nRadio.AtrasarEmisora();
+			}
+		});
 		buttonRtoL.setBounds(10, 132, 89, 23);
 		contentPane.add(buttonRtoL);
 		
 		JButton btn1 = new JButton("1");
-		btn1.setBounds(10, 179, 39, 23);
+		btn1.setBounds(10, 179, 42, 23);
 		contentPane.add(btn1);
 		
 		JButton btn2 = new JButton("2");
-		btn2.setBounds(59, 179, 40, 23);
+		btn2.setBounds(59, 179, 42, 23);
 		contentPane.add(btn2);
 		
 		JButton btn3 = new JButton("3");
-		btn3.setBounds(109, 179, 40, 23);
+		btn3.setBounds(109, 179, 42, 23);
 		contentPane.add(btn3);
 		
 		JButton btn4 = new JButton("4");
-		btn4.setBounds(159, 179, 40, 23);
+		btn4.setBounds(159, 179, 42, 23);
 		contentPane.add(btn4);
 		
 		JButton btn5 = new JButton("5");
-		btn5.setBounds(209, 179, 40, 23);
+		btn5.setBounds(209, 179, 42, 23);
 		contentPane.add(btn5);
 		
 		JButton btn6 = new JButton("6");
-		btn6.setBounds(259, 179, 40, 23);
+		btn6.setBounds(259, 179, 42, 23);
 		contentPane.add(btn6);
 		
 		JButton btn7 = new JButton("7");
-		btn7.setBounds(309, 179, 40, 23);
+		btn7.setBounds(309, 179, 42, 23);
 		contentPane.add(btn7);
 		
 		JButton btn8 = new JButton("8");
-		btn8.setBounds(359, 179, 40, 23);
+		btn8.setBounds(359, 179, 42, 23);
 		contentPane.add(btn8);
 		
 		JButton btn9 = new JButton("9");
-		btn9.setBounds(409, 179, 40, 23);
+		btn9.setBounds(409, 179, 42, 23);
 		contentPane.add(btn9);
 		
 		JButton btn10 = new JButton("10");
-		btn10.setBounds(459, 179, 45, 23);
+		btn10.setBounds(455, 179, 55, 23);
 		contentPane.add(btn10);
 		
 		JButton btn11 = new JButton("11");
-		btn11.setBounds(514, 179, 45, 23);
+		btn11.setBounds(512, 179, 55, 23);
 		contentPane.add(btn11);
 		
 		JButton btn12 = new JButton("12");
