@@ -97,33 +97,33 @@ public class Radio implements InterfazRadio {
 			return "Radio 1.0";
 		}
 	}
-	public int getCONST_CAMBIO_AM()
+	public int getconstCambioAM()
 	{
-		return CONST_CAMBIO_AM; 
+		return constCambioAM;
 	}
-	
-	public double CONST_CAMBIO_FM()
+
+	public double constCambioFM()
 	{
-		return CONST_CAMBIO_FM;
+		return constCambioFM;
 	}
-	
-	public int MAX_AM()
+
+	public int maxAM()
 	{
-		return MAX_AM;
+		return maxAM;
 	}
-	
-	public int MIN_AM()
+
+	public int minAM()
 	{
-		return MIN_AM;
+		return minAM;
 	}
-	
-	public double MAX_FM()
+
+	public double maxFM()
 	{
-		return MAX_FM;
+		return maxFM;
 	}
-	
-	public double MIN_FM()
+
+	public double minFM()
 	{
-		return MIN_FM;
+		return minFM;
 	}
 }
