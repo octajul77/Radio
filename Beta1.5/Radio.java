@@ -3,12 +3,41 @@ public class Radio implements InterfazRadio {
 	private String Frec;
 	private double num;
 	private double num1;
+	private double[] FMArray;
+	private double[] AMArray;
 	public Radio() {
 		// TODO Auto-generated constructor stub
 		Encendido = false;
 		Frec = "AM";
 	    num=minAM();
 		num1=minFM();
+		FMArray = new double[12];
+		AMArray = new double[12];
+		FMArray[0] = 0.0;
+		FMArray[1] = 0.0;
+		FMArray[2] = 0.0;
+		FMArray[3] = 0.0;
+		FMArray[4] = 0.0;
+		FMArray[5] = 0.0;
+		FMArray[6] = 0.0;
+		FMArray[7] = 0.0;
+		FMArray[8] = 0.0;
+		FMArray[9] = 0.0;
+		FMArray[10] = 0.0;
+		FMArray[11] = 0.0;
+		AMArray[0] = 0.0;
+		AMArray[1] = 0.0;
+		AMArray[2] = 0.0;
+		AMArray[3] = 0.0;
+		AMArray[4] = 0.0;
+		AMArray[5] = 0.0;
+		AMArray[6] = 0.0;
+		AMArray[7] = 0.0;
+		AMArray[8] = 0.0;
+		AMArray[9] = 0.0;
+		AMArray[10] = 0.0;
+		AMArray[11] = 0.0;
+		
 	}
 	public void EncenderApagar()
 	{
@@ -118,6 +147,17 @@ public class Radio implements InterfazRadio {
 		if(Encendido)
 		{
 			System.out.println("Guardar Emisora");
+			if (Frec=="AM")
+			{
+				AMArray[posicion-1]=emisora;
+				System.out.println(emisora);
+				System.out.println("Guardado "+AMArray[posicion-1]+" en el array de AM en la posicion "+(posicion-1));
+			} else {
+				FMArray[posicion-1]=emisora;
+				System.out.println(emisora);
+				System.out.println("Guardado "+FMArray[posicion-1]+" en el array de FM en la posicion "+(posicion-1));
+			}
+			
 		}
 	};
 	
@@ -148,10 +188,19 @@ public class Radio implements InterfazRadio {
 		{
 			return Frec;
 		} else {
-			return "Radio 1.0";
+			return "------- Radio 1.0 -------";
 		}
 	}
 	
+	public void changeFrec()
+	{
+		if (Frec=="AM")
+		{
+			Frec = "FM";
+		} else {
+			Frec = "AM";
+		}
+	}
 	public String getNum()
 	{
 		if (Encendido)
@@ -167,7 +216,7 @@ public class Radio implements InterfazRadio {
 			
 					}
 		}else {
-			return "Radio 1.0";
+			return "------- Radio 1.0 -------";
 		}
 	};
 	
@@ -202,4 +251,5 @@ public class Radio implements InterfazRadio {
 		return minFM;
 	}
 	
+
 }
