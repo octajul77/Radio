@@ -104,6 +104,7 @@ public class GUII extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				nRadio.AdelantarEmisora();
+				txtRadio.setText(nRadio.getNum());
 			}
 		});
 		buttonLtoR.setBounds(734, 60, 50, 80);
@@ -118,6 +119,7 @@ public class GUII extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				nRadio.AtrasarEmisora();
+				txtRadio.setText(nRadio.getNum());
 			}
 		});
 		buttonRtoL.setBounds(685, 60, 50, 80);
