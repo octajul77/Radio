@@ -89,7 +89,7 @@ public class GUII extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				nRadio.CambiarFrec();
-				txtRadio.setText(nRadio.getFrec());
+				txtRadio.setText(nRadio.getNum()+" "+nRadio.getFrec());
 			}
 		});
 		btnAmfm.setBounds(695, 11, 89, 23);
@@ -104,7 +104,7 @@ public class GUII extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				nRadio.AdelantarEmisora();
-				txtRadio.setText(nRadio.getNum());
+				txtRadio.setText(nRadio.getNum()+" "+nRadio.getFrec());
 			}
 		});
 		buttonLtoR.setBounds(734, 60, 50, 80);
@@ -131,7 +131,7 @@ public class GUII extends JFrame {
 		btn1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=0.0;
+				double nEmisora=Double.parseDouble(nRadio.getNum());
 				nRadio.GuardarEmisora(nEmisora, 1);
 			}
 		});
@@ -144,7 +144,7 @@ public class GUII extends JFrame {
 		btn2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=0.0;
+				double nEmisora=Double.parseDouble(nRadio.getNum());
 				nRadio.GuardarEmisora(nEmisora, 2);
 			}
 		});
@@ -157,7 +157,7 @@ public class GUII extends JFrame {
 		btn3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=0.0;
+				double nEmisora=Double.parseDouble(nRadio.getNum());
 				nRadio.GuardarEmisora(nEmisora, 3);
 			}
 		});
@@ -170,7 +170,7 @@ public class GUII extends JFrame {
 		btn4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=0.0;
+				double nEmisora=Double.parseDouble(nRadio.getNum());
 				nRadio.GuardarEmisora(nEmisora, 4);
 			}
 		});
@@ -183,7 +183,7 @@ public class GUII extends JFrame {
 		btn5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=0.0;
+				double nEmisora=Double.parseDouble(nRadio.getNum());
 				nRadio.GuardarEmisora(nEmisora, 5);
 			}
 		});
@@ -196,7 +196,7 @@ public class GUII extends JFrame {
 		btn6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=0.0;
+				double nEmisora=Double.parseDouble(nRadio.getNum());
 				nRadio.GuardarEmisora(nEmisora, 6);
 			}
 		});
@@ -209,7 +209,7 @@ public class GUII extends JFrame {
 		btn7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=0.0;
+				double nEmisora=Double.parseDouble(nRadio.getNum());
 				nRadio.GuardarEmisora(nEmisora, 7);
 			}
 		});
@@ -222,7 +222,7 @@ public class GUII extends JFrame {
 		btn8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=0.0;
+				double nEmisora=Double.parseDouble(nRadio.getNum());
 				nRadio.GuardarEmisora(nEmisora, 8);
 			}
 		});
@@ -235,7 +235,7 @@ public class GUII extends JFrame {
 		btn9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=0.0;
+				double nEmisora=Double.parseDouble(nRadio.getNum());
 				nRadio.GuardarEmisora(nEmisora, 9);
 			}
 		});
@@ -248,7 +248,7 @@ public class GUII extends JFrame {
 		btn10.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=0.0;
+				double nEmisora=Double.parseDouble(nRadio.getNum());
 				nRadio.GuardarEmisora(nEmisora, 10);
 			}
 		});
@@ -261,7 +261,7 @@ public class GUII extends JFrame {
 		btn11.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=0.0;
+				double nEmisora=Double.parseDouble(nRadio.getNum());
 				nRadio.GuardarEmisora(nEmisora, 11);
 			}
 		});
@@ -274,7 +274,7 @@ public class GUII extends JFrame {
 		btn12.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=0.0;
+				double nEmisora=Double.parseDouble(nRadio.getNum());
 				nRadio.GuardarEmisora(nEmisora, 12);
 			}
 		});
