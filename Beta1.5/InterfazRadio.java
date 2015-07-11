@@ -6,6 +6,7 @@ public interface InterfazRadio {
 	final double minFM = 87.9;
 	final double maxFM = 107.9;
 	
+	
 	public void EncenderApagar();
 	
 	public void CambiarFrec();
