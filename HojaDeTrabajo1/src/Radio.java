@@ -20,46 +20,67 @@ public class Radio implements InterfazRadio {
 	
 	public void CambiarFrec()
 	{
-		if(Frec == "AM")
+		if (Encendido)
 		{
-			Frec = "FM";
-		} else {
-			Frec = "AM";
+			if(Frec == "AM")
+			{
+				Frec = "FM";
+			} else {
+				Frec = "AM";
+			}
+			System.out.println("Cambiar Frec");
+			System.out.println("La Frecuencia es: "+Frec);
 		}
-		System.out.println("Cambiar Frec");
-		System.out.println("La Frecuencia es: "+Frec);
 	};
 	
 	public void CargarEmisora(double emisora)
 	{
-		System.out.println("Cargar Emisora");
+		if (Encendido)
+		{
+			System.out.println("Cargar Emisora");
+		}
 	};
 	
 	public void AdelantarEmisora()
 	{
-		System.out.println("Adelantar Emisora");
+		if(Encendido)
+		{
+			System.out.println("Adelantar Emisora");
+		}
 	}
 	;
 	
 	public void AtrasarEmisora()
 	{
-		System.out.println("Atrasar Emisora");
+		if(Encendido)
+		{
+			System.out.println("Atrasar Emisora");
+		}
 		
 	};
 	
 	public void GuardarEmisora(double emisora, int posicion)
 	{
-		System.out.println("Guardar Emisora");
+		if(Encendido)
+		{
+			System.out.println("Guardar Emisora");
+		}
 	};
 	
 	public void SubirVolumen()
 	{
-		System.out.println("Subir Volumen");
+		if(Encendido)
+		{
+			System.out.println("Subir Volumen");
+		}
 	};
 	
 	public void BajarVolumen()
 	{
-		System.out.println("Bajar Volumen");
+		if(Encendido)
+		{
+			System.out.println("Bajar Volumen");
+		}
 	};
 	
 	public boolean getEncendido()
@@ -69,7 +90,12 @@ public class Radio implements InterfazRadio {
 	
 	public String getFrec()
 	{
-		return Frec;
+		if (Encendido)
+		{
+			return Frec;
+		} else {
+			return "Radio 1.0";
+		}
 	}
 	public int getCONST_CAMBIO_AM()
 	{
