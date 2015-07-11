@@ -1,11 +1,10 @@
 public interface InterfazRadio {
-	final int CONST_CAMBIO_AM = 10;
-	final double CONST_CAMBIO_FM = 0.2; 
-	final int MAX_AM = 1610;
-	final int MIN_AM = 530;
-	final double MAX_FM = 107.9;
-	final double MIN_FM = 87.9;
-	
+	final int constCambioAM = 10;
+	final double constCambioFM = 0.2;
+	final int maxAM = 1610;
+	final int minAM = 530;
+	final double minFM = 87.9;
+	final double maxFM = 107.9;
 	
 	public void EncenderApagar();
 	
@@ -22,5 +21,4 @@ public interface InterfazRadio {
 	public void SubirVolumen();
 	
 	public void BajarVolumen();
-	
 }
