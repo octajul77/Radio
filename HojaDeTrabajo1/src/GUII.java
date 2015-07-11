@@ -16,6 +16,8 @@ import javax.swing.*;
 import java.net.URL;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.*;
+import javax.sound.sampled.*;
 
 public class GUII extends JFrame {
 
@@ -24,7 +26,7 @@ public class GUII extends JFrame {
 	private URL FontURL;
 	private Font font, fontcontrol;
 	private GraphicsEnvironment ge;
-
+	Clip clip0;
 	/**
 	 * Launch the application.
 	 */
@@ -63,6 +65,18 @@ public class GUII extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				nRadio.EncenderApagar();
+				try{
+				if(!nRadio.getEncendido()){
+					clip0.stop();
+				}
+				if(nRadio.getEncendido()){
+					clip0 = AudioSystem.getClip();
+					clip0.open(AudioSystem.getAudioInputStream(new File("Content/Music/The_Entertainer.wav")));
+					clip0.loop(1);
+				}
+				}
+				catch(Exception ex){
+				}
 			}
 		});
 		btnONOFF.setBounds(24, 11, 89, 23);
@@ -271,6 +285,15 @@ public class GUII extends JFrame {
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				nRadio.SubirVolumen();
+				if(nRadio.getEncendido()){
+					FloatControl gainControl = (FloatControl) clip0.getControl(FloatControl.Type.MASTER_GAIN);
+					if(gainControl.getValue()<=4)
+						gainControl.setValue(gainControl.getValue()+1); // Volume by 10 decibels.
+					else
+						gainControl.setValue(6);
+				txtRadio.setText(Float.toString(gainControl.getValue()));
+				}
+
 			}
 		});
 		btnPlus.setBounds(70, 60, 50, 80);
@@ -281,6 +304,12 @@ public class GUII extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				nRadio.BajarVolumen();
+				if(nRadio.getEncendido()){
+				FloatControl gainControl = (FloatControl) clip0.getControl(FloatControl.Type.MASTER_GAIN);
+				gainControl.setValue(gainControl.getValue()-1); // Reduce volume by 10 decibels.
+				txtRadio.setText(Float.toString(gainControl.getValue()));
+				}
+
 			}
 		});
 		btnMinus.setFont(new Font("Arial", Font.BOLD, 20));
@@ -288,9 +317,7 @@ public class GUII extends JFrame {
 		btnMinus.setBounds(20, 60, 50, 80);
 		contentPane.add(btnMinus);
 
-
-		//Pantalla de 18 caracteres
-		txtRadio = new JLabel("---- Radio 1.0----");
+		txtRadio = new JLabel("------- Radio 1.0 -------");
 		txtRadio.setForeground(Color.BLACK);
 		FontURL = new URL("http://www.webpagepublicity.com/" +
             "free-fonts/d/Digital%20Readout%20Upright.ttf");
