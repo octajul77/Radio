@@ -30,6 +30,8 @@ public class GUII extends JFrame {
  	private int song=0;
 	private FloatControl gainControl;
 	private int last;
+	private boolean reset;
+	private boolean save;
 
 	/**
 	 * Launch the application.
@@ -51,7 +53,7 @@ public class GUII extends JFrame {
 	 * Create the frame.
 	 */
 	public GUII() throws Exception{
-
+		reset = false;
 		Radio nRadio = new Radio();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 810, 260);
@@ -69,6 +71,7 @@ public class GUII extends JFrame {
 		}
 		catch(Exception e){
 		}
+		try{
 		clip[0].open(AudioSystem.getAudioInputStream(new File("Content/Music/Beast.wav")));
 		clip[1].open(AudioSystem.getAudioInputStream(new File("Content/Music/Girls_Just_Wanna_Have_Fun.wav")));
 		clip[2].open(AudioSystem.getAudioInputStream(new File("Content/Music/La_Vie_En_Rose.wav")));
@@ -79,6 +82,11 @@ public class GUII extends JFrame {
 		clip[7].open(AudioSystem.getAudioInputStream(new File("Content/Music/Wonderful_Wonderful.wav")));
 		clip[8].open(AudioSystem.getAudioInputStream(new File("Content/Music/You_Always_Hurt_The_One_You_Love.wav")));
 		clip[9].open(AudioSystem.getAudioInputStream(new File("Content/Music/You_Belong_To_Me.wav")));
+		}
+		catch(IOException e)
+		{
+			System.out.println("No se encontraron los archivos");
+		}
 
 
 
@@ -129,9 +137,11 @@ public class GUII extends JFrame {
 		buttonLtoR.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				nRadio.AdelantarEmisora();
-				txtRadio.setText("      "+nRadio.getNum()+" "+nRadio.getFrec());
-				music(nRadio.getNum(), nRadio.getFrec());
+				if(nRadio.getEncendido()){
+					nRadio.AdelantarEmisora();
+					txtRadio.setText("      "+nRadio.getNum()+" "+nRadio.getFrec());
+					music(nRadio.getNum(), nRadio.getFrec());
+				}
 			}
 		});
 		buttonLtoR.setBounds(734, 60, 50, 80);
@@ -145,9 +155,11 @@ public class GUII extends JFrame {
 		buttonRtoL.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				nRadio.AtrasarEmisora();
-				txtRadio.setText("      "+nRadio.getNum()+" "+nRadio.getFrec());
-				music(nRadio.getNum(), nRadio.getFrec());
+				if(nRadio.getEncendido()){
+					nRadio.AtrasarEmisora();
+					txtRadio.setText("      "+nRadio.getNum()+" "+nRadio.getFrec());
+					music(nRadio.getNum(), nRadio.getFrec());
+				}
 			}
 		});
 		buttonRtoL.setBounds(685, 60, 50, 80);
@@ -159,8 +171,7 @@ public class GUII extends JFrame {
 		btn1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=Double.parseDouble(nRadio.getNum());
-				nRadio.GuardarEmisora(nEmisora, 1);
+				btnControl(1,nRadio);
 			}
 		});
 		btn1.setBounds(14, 165, 55, 50);
@@ -172,8 +183,7 @@ public class GUII extends JFrame {
 		btn2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=Double.parseDouble(nRadio.getNum());
-				nRadio.GuardarEmisora(nEmisora, 2);
+				btnControl(2,nRadio);
 			}
 		});
 		btn2.setBounds(79, 165, 55, 50);
@@ -185,8 +195,7 @@ public class GUII extends JFrame {
 		btn3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=Double.parseDouble(nRadio.getNum());
-				nRadio.GuardarEmisora(nEmisora, 3);
+				btnControl(3,nRadio);
 			}
 		});
 		btn3.setBounds(144, 165, 55, 50);
@@ -198,8 +207,7 @@ public class GUII extends JFrame {
 		btn4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=Double.parseDouble(nRadio.getNum());
-				nRadio.GuardarEmisora(nEmisora, 4);
+				btnControl(4,nRadio);
 			}
 		});
 		btn4.setBounds(209, 165, 55, 50);
@@ -211,8 +219,7 @@ public class GUII extends JFrame {
 		btn5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=Double.parseDouble(nRadio.getNum());
-				nRadio.GuardarEmisora(nEmisora, 5);
+				btnControl(5,nRadio);
 			}
 		});
 		btn5.setBounds(274, 165, 55, 50);
@@ -224,8 +231,7 @@ public class GUII extends JFrame {
 		btn6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=Double.parseDouble(nRadio.getNum());
-				nRadio.GuardarEmisora(nEmisora, 6);
+				btnControl(6,nRadio);
 			}
 		});
 		btn6.setBounds(339, 165, 55, 50);
@@ -237,8 +243,7 @@ public class GUII extends JFrame {
 		btn7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=Double.parseDouble(nRadio.getNum());
-				nRadio.GuardarEmisora(nEmisora, 7);
+				btnControl(7,nRadio);
 			}
 		});
 		btn7.setBounds(404, 165, 55, 50);
@@ -250,8 +255,7 @@ public class GUII extends JFrame {
 		btn8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=Double.parseDouble(nRadio.getNum());
-				nRadio.GuardarEmisora(nEmisora, 8);
+				btnControl(8,nRadio);
 			}
 		});
 		btn8.setBounds(469, 165, 55, 50);
@@ -263,8 +267,7 @@ public class GUII extends JFrame {
 		btn9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=Double.parseDouble(nRadio.getNum());
-				nRadio.GuardarEmisora(nEmisora, 9);
+				btnControl(9,nRadio);
 			}
 		});
 		btn9.setBounds(534, 165, 55, 50);
@@ -276,8 +279,7 @@ public class GUII extends JFrame {
 		btn10.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=Double.parseDouble(nRadio.getNum());
-				nRadio.GuardarEmisora(nEmisora, 10);
+				btnControl(12,nRadio);
 			}
 		});
 		btn10.setBounds(599, 165, 55, 50);
@@ -289,8 +291,7 @@ public class GUII extends JFrame {
 		btn11.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=Double.parseDouble(nRadio.getNum());
-				nRadio.GuardarEmisora(nEmisora, 11);
+				btnControl(11,nRadio);
 			}
 		});
 		btn11.setBounds(664, 165, 55, 50);
@@ -302,8 +303,7 @@ public class GUII extends JFrame {
 		btn12.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double nEmisora=Double.parseDouble(nRadio.getNum());
-				nRadio.GuardarEmisora(nEmisora, 12);
+				btnControl(12,nRadio);
 			}
 		});
 		btn12.setBounds(729, 165, 55, 50);
@@ -363,8 +363,37 @@ public class GUII extends JFrame {
 		txtRadio.setBackground(Color.GREEN);
 		txtRadio.setBounds(144, 44, 510, 110);
 		contentPane.add(txtRadio);
+		
+		JButton Save = new JButton("Save");
+		Save.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				save = true;
+				System.out.println("Boton Save esta activado");
+			}
+		});
+		Save.setFont(new Font("Arial", Font.BOLD, 14));
+		Save.setBackground(Color.LIGHT_GRAY);
+		Save.setBounds(133, 11, 89, 23);
+		contentPane.add(Save);
 	}
-
+	//Control de botones 1-12
+	public void btnControl(int posicion, Radio nRadio)
+	{
+		if(nRadio.getEncendido()){
+			if(save) {
+				double nEmisora=Double.parseDouble(nRadio.getNum());
+				nRadio.GuardarEmisora(nEmisora, posicion);
+				save = false;
+				System.out.println("El boton save esta desactivado");
+			}
+			if (nRadio.cEmisora(posicion)!=0.0){
+			txtRadio.setText("      "+nRadio.cEmisora(posicion)+"0 "+nRadio.getFrec());
+			nRadio.CargarEmisora(nRadio.cEmisora(posicion));
+			}
+		}
+	}
+	
 	//Music Controller
 		public void music(String x, String frec){
 			if(x.equals("530.0"))
@@ -394,3 +423,4 @@ public class GUII extends JFrame {
 			}
 		}
 }
+
