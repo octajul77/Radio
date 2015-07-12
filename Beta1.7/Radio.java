@@ -1,16 +1,18 @@
 public class Radio implements InterfazRadio {
 	private boolean Encendido;
 	private String Frec;
-	private double num;
-	private double num1;
+	private double AM;
+	private double FM;
 	private double[] FMArray;
 	private double[] AMArray;
+	private double nEmisora;
 	public Radio() {
 		// TODO Auto-generated constructor stub
 		Encendido = false;
 		Frec = "AM";
-	    num=minAM();
-		num1=minFM();
+	    AM=minAM();
+		FM=minFM();
+		nEmisora = 0.0;
 		FMArray = new double[12];
 		AMArray = new double[12];
 		for(int i=0; i<12; i++){
@@ -49,7 +51,12 @@ public class Radio implements InterfazRadio {
 	{
 		if (Encendido)
 		{
-			System.out.println("Cargar Emisora");
+			if(Frec == "AM")
+			{
+				AM = emisora;
+			} else {
+				FM = emisora;
+			}
 		}
 	};
 
@@ -59,34 +66,24 @@ public class Radio implements InterfazRadio {
 		{
 		if(Frec == "AM")
 			{
-			num=num+getconstCambioAM();
-			System.out.println(num);
-				if (num>=maxAM())
+				AM=AM+getconstCambioAM();
+				System.out.println(AM);
+				if (AM>=maxAM())
 				{
-					num=minAM();
-
-				}else{
-					num=num;
-					}
-			}
-			else {
-			num1=num1+constCambioFM();
-			System.out.println(num1);
-			if (num1>=maxFM())
+					AM=minAM();
+				}
+			} else {
+				FM=FM+constCambioFM();
+				System.out.println(FM);
+				if (FM>=maxFM())
 				{
-					num1=minFM();
+					FM=minFM();
 
-				}else{
-					num1=num1;
-					}
-
-
+				}
 			}
-
-			System.out.println("Adelantar Emisora");
+		System.out.println("Adelantar Emisora");
 		}
 	}
-	;
 
 	public void AtrasarEmisora()
 	{
@@ -94,32 +91,24 @@ public class Radio implements InterfazRadio {
 		{
 		if(Frec == "AM")
 			{
-			num=num-getconstCambioAM();
-			System.out.println(num);
-				if (num<=minAM())
+				AM=AM-getconstCambioAM();
+				System.out.println(AM);
+				if (AM<=minAM())
 				{
-					num=minAM();
-
-				}else{
-					num=num;
-					}
-			}
-			else {
-			num1=num1-constCambioFM();
-			System.out.println(num1);
-				if (num1<=maxFM())
+					AM=minAM();
+				}
+			} else {
+				FM=FM-constCambioFM();
+				System.out.println(FM);
+				if (FM<=minFM())
 				{
-					num1=minFM();
-
-				}else{
-					num1=num1;
+					FM=minFM();
+				}
 			}
+		System.out.println("Atrasar Emisora");
+		}	    
+	};
 
-			System.out.println("Atrasar Emisora");
-		        }
-
-	    };
-	}
 
 	public void GuardarEmisora(double emisora, int posicion)
 	{
@@ -138,6 +127,21 @@ public class Radio implements InterfazRadio {
 			}
 
 		}
+	};
+	
+	public double cEmisora(int posicion)
+	{
+		if(Encendido)
+		{
+			System.out.println("Cargando Emisora");
+			if (Frec=="AM")
+			{
+				nEmisora = AMArray[posicion-1]; 
+			} else {
+				nEmisora = FMArray[posicion-1];
+			}
+		}
+		return nEmisora;
 	};
 
 	public void SubirVolumen()
@@ -186,11 +190,11 @@ public class Radio implements InterfazRadio {
 		{
 			if(Frec == "AM")
 			{
-				String num2 = Double.toString(num);
+				String num2 = Double.toString(AM);
 				return num2;
 
 			} else {
-					String num3 = Double.toString(num1);
+					String num3 = Double.toString(FM);
 					num3+="00";
 					return num3.substring(0,5);
 
