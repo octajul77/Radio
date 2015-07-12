@@ -121,9 +121,11 @@ public class GUII extends JFrame {
 		btnAmfm.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				nRadio.CambiarFrec();
-				txtRadio.setText("      "+nRadio.getNum()+" "+nRadio.getFrec());
-				music(nRadio.getNum(), nRadio.getFrec());
+				if(nRadio.getEncendido()){
+					nRadio.CambiarFrec();
+					txtRadio.setText("      "+nRadio.getNum()+" "+nRadio.getFrec());
+					music(nRadio.getNum(), nRadio.getFrec());
+				}
 			}
 		});
 		btnAmfm.setBounds(695, 11, 89, 23);
@@ -368,8 +370,10 @@ public class GUII extends JFrame {
 		Save.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				save = true;
-				System.out.println("Boton Save esta activado");
+				if(nRadio.getEncendido()){
+					save = true;
+					System.out.println("Boton Save esta activado");
+				}
 			}
 		});
 		Save.setFont(new Font("Arial", Font.BOLD, 14));
@@ -423,4 +427,3 @@ public class GUII extends JFrame {
 			}
 		}
 }
-
