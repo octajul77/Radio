@@ -9,8 +9,8 @@ public class Radio implements InterfazRadio {
 	public Radio() {
 		Encendido = false;
 		Frec = "AM";
-	    AM = minAM();
-		FM = minFM();
+	    AM = MIN_AM();
+		FM = MIN_FM();
 		nEmisora = 0.0;
 		FMArray = new double[12];
 		AMArray = new double[12];
@@ -19,7 +19,7 @@ public class Radio implements InterfazRadio {
 			AMArray[i] = 0.0;
 		}
 	}
-	public void EncenderApagar(){
+	public void encenderApagar(){
 		if (!Encendido){
 			Encendido = true;
 		}
@@ -29,7 +29,7 @@ public class Radio implements InterfazRadio {
 		System.out.println("Encender Apagar");
 		System.out.println(Encendido);
 	}
-	public void CambiarFrec(){
+	public void cambiarFrec(){
 		if (Encendido){
 			if(Frec == "AM"){
 				Frec = "FM";
@@ -41,7 +41,7 @@ public class Radio implements InterfazRadio {
 			System.out.println("La Frecuencia es: "+Frec);
 		}
 	}
-	public void CargarEmisora(double emisora){
+	public void cargarEmisora(double emisora){
 		if (Encendido){
 			if(Frec == "AM"){
 				AM = emisora;
@@ -51,45 +51,45 @@ public class Radio implements InterfazRadio {
 			}
 		}
 	}
-	public void AdelantarEmisora(){
+	public void adelantarEmisora(){
 		if(Encendido){
 		if(Frec == "AM"){
-			AM=AM+getconstCambioAM();
+			AM=AM+getCONST_CAMBIO_AM();
 			System.out.println(AM);
-			if (AM>=maxAM()){
-				AM=minAM();
+			if (AM>=MAX_AM()){
+				AM=MIN_AM();
 			}
 		}
 		else{
-			FM=FM+constCambioFM();
+			FM=FM+CONST_CAMBIO_FM();
 			System.out.println(FM);
-			if (FM>=maxFM()){
-				FM=minFM();
+			if (FM>=MAX_FM()){
+				FM=MIN_FM();
 			}
 		}
 		System.out.println("Adelantar Emisora");
 		}
 	}
-	public void AtrasarEmisora(){
+	public void atrasarEmisora(){
 		if(Encendido){
 		if(Frec == "AM"){
-			AM=AM-getconstCambioAM();
+			AM=AM-getCONST_CAMBIO_AM();
 			System.out.println(AM);
-			if (AM<=minAM()){
-				AM=minAM();
+			if (AM<=MIN_AM()){
+				AM=MIN_AM();
 			}
 		}
 		else {
-			FM=FM-constCambioFM();
+			FM=FM-CONST_CAMBIO_FM();
 			System.out.println(FM);
-			if (FM<=minFM()){
-				FM=minFM();
+			if (FM<=MIN_FM()){
+				FM=MIN_FM();
 			}
 		}
 		System.out.println("Atrasar Emisora");
 		}
 	}
-	public void GuardarEmisora(double emisora, int posicion){
+	public void guardarEmisora(double emisora, int posicion){
 		if(Encendido){
 			System.out.println("Guardar Emisora");
 			if (Frec=="AM"){
@@ -116,12 +116,12 @@ public class Radio implements InterfazRadio {
 		}
 		return nEmisora;
 	}
-	public void SubirVolumen(){
+	public void subirVolumen(){
 		if(Encendido){
 			System.out.println("Subir Volumen");
 		}
 	}
-	public void BajarVolumen(){
+	public void bajarVolumen(){
 		if(Encendido){
 			System.out.println("Bajar Volumen");
 		}
@@ -162,22 +162,22 @@ public class Radio implements InterfazRadio {
 			return "       Radio 2DJ";
 		}
 	}
-	public int getconstCambioAM(){
-		return constCambioAM;
+	public int getCONST_CAMBIO_AM(){
+		return CONST_CAMBIO_AM;
 	}
-	public double constCambioFM(){
-		return constCambioFM;
+	public double CONST_CAMBIO_FM(){
+		return CONST_CAMBIO_FM;
 	}
-	public int maxAM(){
-		return maxAM;
+	public int MAX_AM(){
+		return MAX_AM;
 	}
-	public int minAM(){
-		return minAM;
+	public int MIN_AM(){
+		return MIN_AM;
 	}
-	public double maxFM(){
-		return maxFM;
+	public double MAX_FM(){
+		return MAX_FM;
 	}
-	public double minFM(){
-		return minFM;
+	public double MIN_FM(){
+		return MIN_FM;
 	}
 }
