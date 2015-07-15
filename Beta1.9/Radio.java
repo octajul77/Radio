@@ -137,6 +137,13 @@ public class Radio implements InterfazRadio {
 			return "       Radio 2DJ";
 		}
 	}
+	public int vFrecAM(String f)
+	{
+		if (f=="AM"){
+			return 1;
+		}
+		return 0;
+	}
 	public void changeFrec(){
 		if (Frec=="AM"){
 			Frec = "FM";
