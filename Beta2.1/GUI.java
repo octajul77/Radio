@@ -409,7 +409,7 @@ public class GUI extends JFrame {
 		contentPane.add(Save);
 	}
 	//Control de botones 1-12
-	
+
 	/**
 	 *  Metodo que permite guardar la emisora en el boton deseado solo si se tiene activado el boton save
 	 * @param posicion

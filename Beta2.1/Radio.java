@@ -6,7 +6,7 @@
 
 /**
  *
- * @author Diego
+ * @author Diego Morales, Julio Gonzalez, Diego Sosa
  */
 public class Radio implements InterfazRadio{
 	private boolean Encendido;
@@ -23,8 +23,8 @@ public class Radio implements InterfazRadio{
     public Radio() {
 		Encendido = false;
 		Frec = "AM";
-                AM = MIN_AM();
-		FM = MIN_FM();
+        AM = MIN_AM;
+		FM = MIN_FM;
 		nEmisora = 0.0;
 		FMArray = new double[12];
 		AMArray = new double[12];
@@ -67,7 +67,7 @@ public class Radio implements InterfazRadio{
 	}
 
     /**
-     * Carga el numero de la emisora en AM o FM, dependiendo 
+     * Carga el numero de la emisora en AM o FM, dependiendo
      * de la frecuencia seleccionada.
      * @param emisora Numero de emisora (double)
      */
@@ -91,17 +91,17 @@ public class Radio implements InterfazRadio{
     public void adelantarEmisora(){
 		if(Encendido){
 		if(Frec == "AM"){
-			AM=AM+getCONST_CAMBIO_AM();
+			AM=AM+CONST_CAMBIO_AM;
 			System.out.println(AM);
-			if (AM>=MAX_AM()){
-				AM=MIN_AM();
+			if (AM>=MAX_AM){
+				AM=MIN_AM;
 			}
 		}
 		else{
-			FM=FM+CONST_CAMBIO_FM();
+			FM=FM+CONST_CAMBIO_FM;
 			System.out.println(FM);
-			if (FM>=MAX_FM()){
-				FM=MIN_FM();
+			if (FM>=MAX_FM){
+				FM=MIN_FM;
 			}
 		}
 		System.out.println("Adelantar Emisora");
@@ -116,17 +116,17 @@ public class Radio implements InterfazRadio{
     public void atrasarEmisora(){
 		if(Encendido){
 		if(Frec == "AM"){
-			AM=AM-getCONST_CAMBIO_AM();
+			AM=AM-CONST_CAMBIO_AM;
 			System.out.println(AM);
-			if (AM<=MIN_AM()){
-				AM=MIN_AM();
+			if (AM<=MIN_AM){
+				AM=MIN_AM;
 			}
 		}
 		else {
-			FM=FM-CONST_CAMBIO_FM();
+			FM=FM-CONST_CAMBIO_FM;
 			System.out.println(FM);
-			if (FM<=MIN_FM()){
-				FM=MIN_FM();
+			if (FM<=MIN_FM){
+				FM=MIN_FM;
 			}
 		}
 		System.out.println("Atrasar Emisora");
@@ -203,7 +203,7 @@ public class Radio implements InterfazRadio{
 	}
 
     /**
-     * Retorna la frecuencia 
+     * Retorna la frecuencia
      * @return Frecuencia AM o FM
      */
     public String getFrec(){
@@ -217,8 +217,8 @@ public class Radio implements InterfazRadio{
 
     /**
      * Retorna un 1 o 0 dependiendo de si el String ingresado corresponde o no a AM
-     * @param f Frecuencia 
-     * @return 1 0 0 
+     * @param f Frecuencia
+     * @return 1 0 0
      */
     public int vFrecAM(String f)
 	{
@@ -226,18 +226,6 @@ public class Radio implements InterfazRadio{
 			return 1;
 		}
 		return 0;
-	}
-
-    /**
-     * Cambia la frecuencia entre AM y FM
-     */
-    public void changeFrec(){
-		if (Frec=="AM"){
-			Frec = "FM";
-		}
-		else{
-			Frec = "AM";
-		}
 	}
 
     /**
@@ -262,52 +250,4 @@ public class Radio implements InterfazRadio{
 		}
 	}
 
-    /**
-     * Retorna la constante de cambio de AM
-     * @return El valor 10
-     */
-    public int getCONST_CAMBIO_AM(){
-		return CONST_CAMBIO_AM;
-	}
-
-    /**
-     * Retorna la constante de cambio de FM
-     * @return El valor 0.2
-     */
-    public double CONST_CAMBIO_FM(){
-		return CONST_CAMBIO_FM;
-	}
-
-    /**
-     * Retorna el valor maximo que puede alcanzar AM
-     * @return El valor 1610
-     */
-    public int MAX_AM(){
-		return MAX_AM;
-	}
-
-    /**
-     * Retorna el valor minimo que puede alcanzar AM
-     * @return El valor 530
-     */
-    public int MIN_AM(){
-		return MIN_AM;
-	}
-
-    /**
-     * Retorna el valor maximo que puede alcanzar FM
-     * @return El valor 107.9
-     */
-    public double MAX_FM(){
-		return MAX_FM;
-	}
-
-    /**
-     * Retorna el valor minimo que puede alcanzar FM
-     * @return El valor 87.9
-     */
-    public double MIN_FM(){
-		return MIN_FM;
-	}
-    
 }
