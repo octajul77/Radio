@@ -1,4 +1,14 @@
-public class Radio implements InterfazRadio {
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Diego
+ */
+public class Radio implements InterfazRadio{
 	private boolean Encendido;
 	private String Frec;
 	private double AM;
@@ -6,11 +16,15 @@ public class Radio implements InterfazRadio {
 	private double[] FMArray;
 	private double[] AMArray;
 	private double nEmisora;
-	public Radio() {
+
+    /**
+     * Constructor del objeto Radio. Inicializa los atributos y arrays.
+     */
+    public Radio() {
 		Encendido = false;
 		Frec = "AM";
-	    AM = minAM();
-		FM = minFM();
+                AM = MIN_AM();
+		FM = MIN_FM();
 		nEmisora = 0.0;
 		FMArray = new double[12];
 		AMArray = new double[12];
@@ -19,7 +33,12 @@ public class Radio implements InterfazRadio {
 			AMArray[i] = 0.0;
 		}
 	}
-	public void EncenderApagar(){
+
+    /**
+     * Enciende o apaga la radio modificando el atributo 'Encendido'
+     */
+        @Override
+    public void encenderApagar(){
 		if (!Encendido){
 			Encendido = true;
 		}
@@ -29,7 +48,12 @@ public class Radio implements InterfazRadio {
 		System.out.println("Encender Apagar");
 		System.out.println(Encendido);
 	}
-	public void CambiarFrec(){
+
+    /**
+     * Cambia la frecuencia entre AM y Fm modificando el atributo Frec.
+     */
+        @Override
+    public void cambiarFrec(){
 		if (Encendido){
 			if(Frec == "AM"){
 				Frec = "FM";
@@ -41,7 +65,14 @@ public class Radio implements InterfazRadio {
 			System.out.println("La Frecuencia es: "+Frec);
 		}
 	}
-	public void CargarEmisora(double emisora){
+
+    /**
+     * Carga el numero de la emisora en AM o FM, dependiendo 
+     * de la frecuencia seleccionada.
+     * @param emisora Numero de emisora (double)
+     */
+        @Override
+    public void cargarEmisora(double emisora){
 		if (Encendido){
 			if(Frec == "AM"){
 				AM = emisora;
@@ -51,45 +82,64 @@ public class Radio implements InterfazRadio {
 			}
 		}
 	}
-	public void AdelantarEmisora(){
+
+    /**
+     * Adelanta el numero de la emisora dependiendo de la frecuencia
+     * seleccionada, utilizando la constante de cambio.
+     */
+        @Override
+    public void adelantarEmisora(){
 		if(Encendido){
 		if(Frec == "AM"){
-			AM=AM+getconstCambioAM();
+			AM=AM+getCONST_CAMBIO_AM();
 			System.out.println(AM);
-			if (AM>=maxAM()){
-				AM=minAM();
+			if (AM>=MAX_AM()){
+				AM=MIN_AM();
 			}
 		}
 		else{
-			FM=FM+constCambioFM();
+			FM=FM+CONST_CAMBIO_FM();
 			System.out.println(FM);
-			if (FM>=maxFM()){
-				FM=minFM();
+			if (FM>=MAX_FM()){
+				FM=MIN_FM();
 			}
 		}
 		System.out.println("Adelantar Emisora");
 		}
 	}
-	public void AtrasarEmisora(){
+
+    /**
+     * Atrasa el numero de la emisora dependiendo de la frecuencia
+     * seleccionada, utilizando la constante de cambio.
+     */
+        @Override
+    public void atrasarEmisora(){
 		if(Encendido){
 		if(Frec == "AM"){
-			AM=AM-getconstCambioAM();
+			AM=AM-getCONST_CAMBIO_AM();
 			System.out.println(AM);
-			if (AM<=minAM()){
-				AM=minAM();
+			if (AM<=MIN_AM()){
+				AM=MIN_AM();
 			}
 		}
 		else {
-			FM=FM-constCambioFM();
+			FM=FM-CONST_CAMBIO_FM();
 			System.out.println(FM);
-			if (FM<=minFM()){
-				FM=minFM();
+			if (FM<=MIN_FM()){
+				FM=MIN_FM();
 			}
 		}
 		System.out.println("Atrasar Emisora");
 		}
 	}
-	public void GuardarEmisora(double emisora, int posicion){
+
+    /**
+     * Guarda la emisora selecionada en un array, dependiendo de la frecuencia y posicion especiifica.
+     * @param emisora Numero de emisora
+     * @param posicion Numero de boton seleccionado a traves de la interfaz grafica
+     */
+        @Override
+    public void guardarEmisora(double emisora, int posicion){
 		if(Encendido){
 			System.out.println("Guardar Emisora");
 			if (Frec=="AM"){
@@ -104,7 +154,13 @@ public class Radio implements InterfazRadio {
 			}
 		}
 	}
-	public double cEmisora(int posicion){
+
+    /**
+     * Carga la emisora seleccionada dependiendo del boton oprimido y frecuencia.
+     * @param posicion Numero de boton seleccionado a traves de la interfaz grafica
+     * @return El numero de la emisora cargado
+     */
+    public double cEmisora(int posicion){
 		if(Encendido){
 			System.out.println("Cargando Emisora");
 			if (Frec=="AM"){
@@ -116,20 +172,41 @@ public class Radio implements InterfazRadio {
 		}
 		return nEmisora;
 	}
-	public void SubirVolumen(){
+
+    /**
+     * Imprime en consola que el volumen sube
+     */
+        @Override
+    public void subirVolumen(){
 		if(Encendido){
 			System.out.println("Subir Volumen");
 		}
 	}
-	public void BajarVolumen(){
+
+    /**
+     * Imprime en consola que el volumen baja
+     */
+        @Override
+    public void bajarVolumen(){
 		if(Encendido){
 			System.out.println("Bajar Volumen");
 		}
 	}
-	public boolean getEncendido(){
+
+    /**
+     * Retorna el estado de la radio (encendido o apagado)
+     * @return Estado de la radio como true o false
+     *
+     */
+    public boolean getEncendido(){
 		return Encendido;
 	}
-	public String getFrec(){
+
+    /**
+     * Retorna la frecuencia 
+     * @return Frecuencia AM o FM
+     */
+    public String getFrec(){
 		if (Encendido){
 			return Frec;
 		}
@@ -137,7 +214,24 @@ public class Radio implements InterfazRadio {
 			return "       Radio 2DJ";
 		}
 	}
-	public void changeFrec(){
+
+    /**
+     * Retorna un 1 o 0 dependiendo de si el String ingresado corresponde o no a AM
+     * @param f Frecuencia 
+     * @return 1 0 0 
+     */
+    public int vFrecAM(String f)
+	{
+		if (f=="AM"){
+			return 1;
+		}
+		return 0;
+	}
+
+    /**
+     * Cambia la frecuencia entre AM y FM
+     */
+    public void changeFrec(){
 		if (Frec=="AM"){
 			Frec = "FM";
 		}
@@ -145,7 +239,12 @@ public class Radio implements InterfazRadio {
 			Frec = "AM";
 		}
 	}
-	public String getNum(){
+
+    /**
+     * Retorna el numero de emisora, dependiendo de si es Am o FM.
+     * @return Numero de emisora como String
+     */
+    public String getNum(){
 		if (Encendido)
 		{
 			if(Frec == "AM"){
@@ -162,22 +261,53 @@ public class Radio implements InterfazRadio {
 			return "       Radio 2DJ";
 		}
 	}
-	public int getconstCambioAM(){
-		return constCambioAM;
+
+    /**
+     * Retorna la constante de cambio de AM
+     * @return El valor 10
+     */
+    public int getCONST_CAMBIO_AM(){
+		return CONST_CAMBIO_AM;
 	}
-	public double constCambioFM(){
-		return constCambioFM;
+
+    /**
+     * Retorna la constante de cambio de FM
+     * @return El valor 0.2
+     */
+    public double CONST_CAMBIO_FM(){
+		return CONST_CAMBIO_FM;
 	}
-	public int maxAM(){
-		return maxAM;
+
+    /**
+     * Retorna el valor maximo que puede alcanzar AM
+     * @return El valor 1610
+     */
+    public int MAX_AM(){
+		return MAX_AM;
 	}
-	public int minAM(){
-		return minAM;
+
+    /**
+     * Retorna el valor minimo que puede alcanzar AM
+     * @return El valor 530
+     */
+    public int MIN_AM(){
+		return MIN_AM;
 	}
-	public double maxFM(){
-		return maxFM;
+
+    /**
+     * Retorna el valor maximo que puede alcanzar FM
+     * @return El valor 107.9
+     */
+    public double MAX_FM(){
+		return MAX_FM;
 	}
-	public double minFM(){
-		return minFM;
+
+    /**
+     * Retorna el valor minimo que puede alcanzar FM
+     * @return El valor 87.9
+     */
+    public double MIN_FM(){
+		return MIN_FM;
 	}
+    
 }
