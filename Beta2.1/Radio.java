@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,8 +7,9 @@
 
 /**
  *
- * @author Diego
+ * @author Diego Morales, Julio Gonzalez, Diego Sosa
  */
+
 public class Radio implements InterfazRadio{
 	private boolean Encendido;
 	private String Frec;
@@ -54,7 +56,7 @@ public class Radio implements InterfazRadio{
         @Override
     public void cambiarFrec(){
 		if (Encendido){
-			if(Frec == "AM"){
+			if(Frec.equals("AM")){
 				Frec = "FM";
 			}
 			else{
@@ -65,11 +67,15 @@ public class Radio implements InterfazRadio{
 		}
 	}
 
+    /**
+     * Este metodo permite cargar la emisora que se tiene guardada dependiendo de el boton que ingrese el usuario
+     * @param posicion
+     */
     @Override
     public void cargarEmisora(int posicion){
 		if(Encendido){
 			System.out.println("Cargando Emisora");
-			if (Frec=="AM"){
+			if (Frec.equals("AM")){
 				AM = AMArray[posicion-1];
 			}
 			else{
@@ -85,7 +91,7 @@ public class Radio implements InterfazRadio{
         @Override
     public void adelantarEmisora(){
 		if(Encendido){
-		if(Frec == "AM"){
+		if(Frec.equals("AM")){
 			AM=AM+CONST_CAMBIO_AM;
 			System.out.println(AM);
 			if (AM>=MAX_AM){
@@ -110,7 +116,7 @@ public class Radio implements InterfazRadio{
         @Override
     public void atrasarEmisora(){
 		if(Encendido){
-		if(Frec == "AM"){
+		if(Frec.equals("AM")){
 			AM=AM-CONST_CAMBIO_AM;
 			System.out.println(AM);
 			if (AM<=MIN_AM){
@@ -137,7 +143,7 @@ public class Radio implements InterfazRadio{
     public void guardarEmisora(double emisora, int posicion){
 		if(Encendido){
 			System.out.println("Guardar Emisora");
-			if (Frec=="AM"){
+			if (Frec.equals("AM")){
 				AMArray[posicion-1]=emisora;
 				System.out.println(emisora);
 				System.out.println("Guardado "+AMArray[posicion-1]+" en el array de AM en la posicion "+(posicion-1));
@@ -152,6 +158,8 @@ public class Radio implements InterfazRadio{
 
     /**
      * Imprime en consola que el volumen sube
+     * Ademas que se encarga de subir el volumen 
+     * hasta el maximo permitido para mostrar en el display
      */
         @Override
     public void subirVolumen(){
@@ -162,10 +170,15 @@ public class Radio implements InterfazRadio{
 
     /**
      * Imprime en consola que el volumen baja
+     * Ademas que se encraga de bajar volumen al minimo que es cero y lo
+     * muestra en el display
      */
         @Override
     public void bajarVolumen(){
 		if(Encendido){
+			/*volumen=volumen-1;
+			if(volumen==0){
+				volumen=volumen*0;*/
 			System.out.println("Bajar Volumen");
 		}
 	}
@@ -179,8 +192,13 @@ public class Radio implements InterfazRadio{
 	}
 
 
+    /**
+     * Este metodo permite regresar la emisora en que se encuentra 
+     * en el momento que se llama el metodo 
+     * @return AM si se esta en AM o FM si se esta en FM
+     */
     public double getEmisora(){
-    	if(Frec == "AM"){
+    	if(Frec.equals("AM")){
 			return AM;
 		}
 		else{
@@ -188,14 +206,27 @@ public class Radio implements InterfazRadio{
 		}
 	}
 
+	/**
+	 * Metodo que permite verificar el estado de
+	 * atributo encendido
+	 * @return Encendido
+	 */
 	public boolean getEncendido(){
 		return Encendido;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString(){
 		return "La mejor radio del mundo";
 	}
 
+	/**
+	 * Metodo que permite ver el volumen actual
+	 * en la radio para mostrar en el display
+	 * @return Volumen
+	 */
 	public int getVolumen(){
 		return Volumen;
 	}
