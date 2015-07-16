@@ -13,9 +13,9 @@ public class Radio implements InterfazRadio{
 	private String Frec;
 	private double AM;
 	private double FM;
+	private int Volumen;
 	private double[] FMArray;
 	private double[] AMArray;
-	private double nEmisora;
 
     /**
      * Constructor del objeto Radio. Inicializa los atributos y arrays.
@@ -25,7 +25,6 @@ public class Radio implements InterfazRadio{
 		Frec = "AM";
         AM = MIN_AM;
 		FM = MIN_FM;
-		nEmisora = 0.0;
 		FMArray = new double[12];
 		AMArray = new double[12];
 		for(int i=0; i<12; i++){
@@ -66,19 +65,15 @@ public class Radio implements InterfazRadio{
 		}
 	}
 
-    /**
-     * Carga el numero de la emisora en AM o FM, dependiendo
-     * de la frecuencia seleccionada.
-     * @param emisora Numero de emisora (double)
-     */
-        @Override
-    public void cargarEmisora(double emisora){
-		if (Encendido){
-			if(Frec == "AM"){
-				AM = emisora;
+    @Override
+    public void cargarEmisora(int posicion){
+		if(Encendido){
+			System.out.println("Cargando Emisora");
+			if (Frec=="AM"){
+				AM = AMArray[posicion-1];
 			}
 			else{
-				FM = emisora;
+				FM = FMArray[posicion-1];
 			}
 		}
 	}
@@ -175,62 +170,37 @@ public class Radio implements InterfazRadio{
 		}
 	}
 
-	 /**
-     * Carga la emisora seleccionada dependiendo del boton oprimido y frecuencia.
-     * @param posicion Numero de boton seleccionado a traves de la interfaz grafica
-     * @return El numero de la emisora cargado
-     */
-    public double cEmisora(int posicion){
-		if(Encendido){
-			System.out.println("Cargando Emisora");
-			if (Frec=="AM"){
-				nEmisora = AMArray[posicion-1];
-			}
-			else{
-				nEmisora = FMArray[posicion-1];
-			}
-		}
-		return nEmisora;
-	}
-
     /**
      * Retorna la frecuencia
      * @return Frecuencia AM o FM
      */
     public String getFrec(){
-		if (Encendido){
-			return Frec;
-		}
-		else{
-			return "       Radio 2DJ";
-		}
+		return Frec;
 	}
 
 
-
-    /**
-     * Retorna el numero de emisora, dependiendo de si es Am o FM.
-     * @return Numero de emisora como String
-     */
-    public String getNum(){
-		if (Encendido)
-		{
-			if(Frec == "AM"){
-				String num2 = Double.toString(AM);
-				return num2;
-			}
-			else{
-				String num3 = Double.toString(FM);
-				num3+="00";
-				return num3.substring(0,5);
-			}
+    public double getEmisora(){
+    	if(Frec == "AM"){
+			return AM;
 		}
 		else{
-			return "       Radio 2DJ";
+			return FM;
 		}
 	}
 
-	 /* Método utilizado para pruebas en JUnit
+	public boolean getEncendido(){
+		return Encendido;
+	}
+
+	public String toString(){
+		return "La mejor radio del mundo";
+	}
+
+	public int getVolumen(){
+		return Volumen;
+	}
+
+	 /* MÃ©todo utilizado para pruebas en JUnit
 	 /**
      * Retorna un 1 o 0 dependiendo de si el String ingresado corresponde o no a AM
      * @param f Frecuencia
@@ -244,5 +214,4 @@ public class Radio implements InterfazRadio{
 		return 0;
 	}
 	*/
-
 }

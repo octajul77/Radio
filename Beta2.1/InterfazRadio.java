@@ -30,20 +30,21 @@ public interface InterfazRadio {
 
 
 	/**
-	 * Metodo que permite encender y apagar la radio
+	 * Metodo que permite encender y apagar la radio cambiando el
+	 * estado de su variable boolean (true=encendido, false=apagado)
 	 */
 	public void encenderApagar();
 
 	/**
-	 * Metodo que permite cambiar la frecuencia
+	 * Metodo que permite cambiar la frecuencia entre AM y FM.
 	 */
 	public void cambiarFrec();
 
 	/**
-	 *  Metodo que permite escoger una frecuencia guardada
-	 * @param emisora
+	 *  Carga la emisora almacena en uno de los 12 botones
+	 * @param posicion Entero de 1 a 12 
 	 */
-	public void cargarEmisora(double emisora);
+	public void cargarEmisora(int posicion);
 
 	/**
 	 * Metodo que permite cambiar a frecuencias mayores
@@ -71,5 +72,24 @@ public interface InterfazRadio {
 	 * Metodo que permite bajar el volumen
 	 */
 	public void bajarVolumen();
+
+	/* NEW 
+	getEncendido *
+	getFrecuencia *
+	getEmisora *
+	toString *
+	cargarEmisora -> double to int *
+	*/
+
+	//Retorna la emisora actual seleccionada (dependiendo si es AM o FM)
+	public double getEmisora();
+	//Retorna el estado actual de Encendido (true=encendido, false=apagado)
+	public boolean getEncendido();
+	//Retorna la frecuencia actual AM o FM
+    public String getFrec();
+    //Retorna el valor del Volumen 
+    public int getVolumen();
+    
+    public String toString();
 
 }
