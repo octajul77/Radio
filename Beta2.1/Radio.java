@@ -76,7 +76,6 @@ public class Radio implements InterfazRadio{
 		if (Encendido){
 			if(Frec == "AM"){
 				AM = emisora;
-				if(emisora==1.0)
 			}
 			else{
 				FM = emisora;
