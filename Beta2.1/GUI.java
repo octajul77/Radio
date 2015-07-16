@@ -86,8 +86,8 @@ public class GUI extends JFrame {
 		{
 			System.out.println("ERROR 0001: No se encontraron los archivos, asegurese de ubicar la carpeta Content junto a los .class");
 		}
-		/*gainControl = (FloatControl) clip[song].getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-10);*/
+		gainControl = (FloatControl) clip[song].getControl(FloatControl.Type.MASTER_GAIN);
+		gainControl.setValue(-10);
 
 
 
@@ -106,7 +106,7 @@ public class GUI extends JFrame {
 					else{
 						clip[song].start();
 						txtRadio.setBackground(Color.green);
-						txtRadio.setText(nRadio.getEmisora()+" "+nRadio.getFrec());
+						txtRadio.setText("         "+((String.valueOf(nRadio.getEmisora())+"000").substring(0,5))+" "+nRadio.getFrec());
 					}
 					nRadio.encenderApagar();
 				}
@@ -125,8 +125,8 @@ public class GUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if(nRadio.getEncendido()){
 					nRadio.cambiarFrec();
-					txtRadio.setText("      "+nRadio.getEmisora()+" "+nRadio.getFrec());
-					music(nRadio.getEmisora());
+					txtRadio.setText("         "+((String.valueOf(nRadio.getEmisora())+"000").substring(0,5))+" "+nRadio.getFrec());
+					music(((String.valueOf(nRadio.getEmisora())+"000").substring(0,5)));
 				}
 			}
 		});
@@ -143,8 +143,8 @@ public class GUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if(nRadio.getEncendido()){
 					nRadio.adelantarEmisora();
-					txtRadio.setText(nRadio.getEmisora()+" "+nRadio.getFrec());
-					music(nRadio.getEmisora());
+					txtRadio.setText("         "+((String.valueOf(nRadio.getEmisora())+"000").substring(0,5))+" "+nRadio.getFrec());
+					music(((String.valueOf(nRadio.getEmisora())+"000").substring(0,5)));
 				}
 			}
 		});
@@ -161,165 +161,165 @@ public class GUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if(nRadio.getEncendido()){
 					nRadio.atrasarEmisora();
-					txtRadio.setText(nRadio.getEmisora()+" "+nRadio.getFrec());
-					music(nRadio.getEmisora());
+					txtRadio.setText("         "+ ((String.valueOf(nRadio.getEmisora())+"000").substring(0,5))+" "+nRadio.getFrec());
+					music(((String.valueOf(nRadio.getEmisora())+"000").substring(0,5)));
 				}
 			}
 		});
 		buttonRtoL.setBounds(685, 60, 50, 80);
 		contentPane.add(buttonRtoL);
 
-		nBtn btn1 = new nBtn("1");
+		JButton btn1 = new JButton("1");
 		btn1.setFont(new Font("Arial", Font.BOLD, 16));
 		btn1.setBackground(Color.LIGHT_GRAY);
 		btn1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnControl(1,nRadio);
-				music(nRadio.getEmisora());
+				music(((String.valueOf(nRadio.getEmisora())+"000").substring(0,5)));
 			}
 		});
 		btn1.setBounds(14, 165, 55, 50);
 		contentPane.add(btn1);
 
-		nBtn btn2 = new nBtn("2");
+		JButton btn2 = new JButton("2");
 		btn2.setFont(new Font("Arial", Font.BOLD, 16));
 		btn2.setBackground(Color.LIGHT_GRAY);
 		btn2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnControl(2,nRadio);
-				music(nRadio.getEmisora());
+				music(((String.valueOf(nRadio.getEmisora())+"000").substring(0,5)));
 			}
 		});
 		btn2.setBounds(79, 165, 55, 50);
 		contentPane.add(btn2);
 
-		nBtn btn3 = new nBtn("3");
+		JButton btn3 = new JButton("3");
 		btn3.setFont(new Font("Arial", Font.BOLD, 16));
 		btn3.setBackground(Color.LIGHT_GRAY);
 		btn3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnControl(3,nRadio);
-				music(nRadio.getEmisora());
+				music(((String.valueOf(nRadio.getEmisora())+"000").substring(0,5)));
 			}
 		});
 		btn3.setBounds(144, 165, 55, 50);
 		contentPane.add(btn3);
 
-		nBtn btn4 = new nBtn("4");
+		JButton btn4 = new JButton("4");
 		btn4.setFont(new Font("Arial", Font.BOLD, 16));
 		btn4.setBackground(Color.LIGHT_GRAY);
 		btn4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnControl(4,nRadio);
-				music(nRadio.getEmisora());
+				music(((String.valueOf(nRadio.getEmisora())+"000").substring(0,5)));
 			}
 		});
 		btn4.setBounds(209, 165, 55, 50);
 		contentPane.add(btn4);
 
-		nBtn btn5 = new nBtn("5");
+		JButton btn5 = new JButton("5");
 		btn5.setFont(new Font("Arial", Font.BOLD, 16));
 		btn5.setBackground(Color.LIGHT_GRAY);
 		btn5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnControl(5,nRadio);
-				music(nRadio.getEmisora());
+				music(((String.valueOf(nRadio.getEmisora())+"000").substring(0,5)));
 			}
 		});
 		btn5.setBounds(274, 165, 55, 50);
 		contentPane.add(btn5);
 
-		nBtn btn6 = new nBtn("6");
+		JButton btn6 = new JButton("6");
 		btn6.setFont(new Font("Arial", Font.BOLD, 16));
 		btn6.setBackground(Color.LIGHT_GRAY);
 		btn6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnControl(6,nRadio);
-				music(nRadio.getEmisora());
+				music(((String.valueOf(nRadio.getEmisora())+"000").substring(0,5)));
 			}
 		});
 		btn6.setBounds(339, 165, 55, 50);
 		contentPane.add(btn6);
 
-		nBtn btn7 = new nBtn("7");
+		JButton btn7 = new JButton("7");
 		btn7.setFont(new Font("Arial", Font.BOLD, 16));
 		btn7.setBackground(Color.LIGHT_GRAY);
 		btn7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnControl(7,nRadio);
-				music(nRadio.getEmisora());
+				music(((String.valueOf(nRadio.getEmisora())+"000").substring(0,5)));
 			}
 		});
 		btn7.setBounds(404, 165, 55, 50);
 		contentPane.add(btn7);
 
-		nBtn btn8 = new nBtn("8");
+		JButton btn8 = new JButton("8");
 		btn8.setFont(new Font("Arial", Font.BOLD, 16));
 		btn8.setBackground(Color.LIGHT_GRAY);
 		btn8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnControl(8,nRadio);
-				music(nRadio.getEmisora());
+				music(((String.valueOf(nRadio.getEmisora())+"000").substring(0,5)));
 			}
 		});
 		btn8.setBounds(469, 165, 55, 50);
 		contentPane.add(btn8);
 
-		nBtn btn9 = new nBtn("9");
+		JButton btn9 = new JButton("9");
 		btn9.setFont(new Font("Arial", Font.BOLD, 16));
 		btn9.setBackground(Color.LIGHT_GRAY);
 		btn9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnControl(9,nRadio);
-				music(nRadio.getEmisora());
+				music(((String.valueOf(nRadio.getEmisora())+"000").substring(0,5)));
 			}
 		});
 		btn9.setBounds(534, 165, 55, 50);
 		contentPane.add(btn9);
 
-		nBtn btn10 = new nBtn("10");
+		JButton btn10 = new JButton("10");
 		btn10.setFont(new Font("Arial", Font.BOLD, 16));
 		btn10.setBackground(Color.LIGHT_GRAY);
 		btn10.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnControl(12,nRadio);
-				music(nRadio.getEmisora());
+				music(((String.valueOf(nRadio.getEmisora())+"000").substring(0,5)));
 			}
 		});
 		btn10.setBounds(599, 165, 55, 50);
 		contentPane.add(btn10);
 
-		nBtn btn11 = new nBtn("11");
+		JButton btn11 = new JButton("11");
 		btn11.setBackground(Color.LIGHT_GRAY);
 		btn11.setFont(new Font("Arial", Font.BOLD, 16));
 		btn11.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnControl(11,nRadio);
-				music(nRadio.getEmisora());
+				music(((String.valueOf(nRadio.getEmisora())+"000").substring(0,5)));
 			}
 		});
 		btn11.setBounds(664, 165, 55, 50);
 		contentPane.add(btn11);
 
-		nBtn btn12 = new nBtn("12");
+		JButton btn12 = new JButton("12");
 		btn12.setBackground(Color.LIGHT_GRAY);
 		btn12.setFont(new Font("Arial", Font.BOLD, 16));
 		btn12.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnControl(12,nRadio);
-				music(nRadio.getEmisora());
+				music(((String.valueOf(nRadio.getEmisora())+"000").substring(0,5)));
 			}
 		});
 		btn12.setBounds(729, 165, 55, 50);
@@ -331,18 +331,14 @@ public class GUI extends JFrame {
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				nRadio.subirVolumen();
-<<<<<<< HEAD
 				if(nRadio.getEncendido()){
-=======
-				/*if(Encendido){
->>>>>>> origin/master
 					FloatControl gainControl = (FloatControl) clip[song].getControl(FloatControl.Type.MASTER_GAIN);
 					if(gainControl.getValue()<=2)
 						gainControl.setValue((gainControl.getValue()+2));
 					else
 						gainControl.setValue(4);
 				txtRadio.setText("        Volume: "+((int)(gainControl.getValue())+20));
-				}*/
+				}
 
 			}
 		});
@@ -354,18 +350,14 @@ public class GUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				nRadio.bajarVolumen();
-<<<<<<< HEAD
 				if(nRadio.getEncendido()){
-=======
-				/*if(Encendido){
->>>>>>> origin/master
 				FloatControl gainControl = (FloatControl) clip[song].getControl(FloatControl.Type.MASTER_GAIN);
 				if(gainControl.getValue()>=-18)
 					gainControl.setValue((gainControl.getValue()-2));
 				else
 					gainControl.setValue(-20);
 				txtRadio.setText("        Volume: "+((int)(gainControl.getValue())+20));
-				}*/
+				}
 
 			}
 		});
@@ -434,16 +426,15 @@ public class GUI extends JFrame {
 	{
 		if(nRadio.getEncendido()){
 			if(save) {
-				double nEmisora= nRadio.getEmisora();
-				nRadio.guardarEmisora(nEmisora, posicion);
+				nRadio.guardarEmisora(nRadio.getEmisora(), posicion);
 				save = false;
 				System.out.println("El boton save esta desactivado");
 				Save.setForeground(Color.black);
 			}
-			if (nRadio.cEmisora(posicion)!=0.0){
-			txtRadio.setText("      "+nRadio.cEmisora(posicion)+"0 "+nRadio.getFrec());
-			nRadio.cargarEmisora(nRadio.cEmisora(posicion));
-			}
+			nRadio.cargarEmisora(posicion);
+			if (nRadio.getEmisora()!=0.0){
+			txtRadio.setText("         "+(String.valueOf(nRadio.getEmisora())+"000").substring(0,5)+" "+nRadio.getFrec());
+			}			
 		}
 	}
 
@@ -489,37 +480,8 @@ public class GUI extends JFrame {
 				clip[last].stop();
 				clip[song].start();
 				last=song;
-				if(!clip[song].isRunning())
-					clip[song].setFramePosition(0);
 			}
+			if(!clip[song].isRunning())
+					clip[song].setFramePosition(0);
 		}
-}
-class nBtn extends JButton{
-	private double emisoraAM;
-	private double emisoraFM;
-	private String frec;
-	public nBtn(String string)
-	{
-		super(string);
-		emisoraAM = 0.0;
-		emisoraFM = 0.0;
-	}
-	public void setEmisora(double emisora, String frec)
-	{
-		if(frec == "AM")
-		{
-			this.emisoraAM = emisora;
-		} else {
-			this.emisoraFM = emisora; 
-		}	
-	}
-	public double getEmisora(String frec)
-	{
-		if(frec == "AM")
-		{
-			return this.emisoraAM;
-		} else {
-			return this.emisoraFM; 
-		}	
-	}
 }
