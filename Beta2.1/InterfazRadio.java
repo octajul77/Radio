@@ -1,7 +1,9 @@
+
+
 /**
- * @author Julio Gonzalez, Diego Morales, Diego Sosa
- * @version 2.0
- */
+* @author Julio Gonzalez, Diego Morales, Diego Sosa
+* @version 2.0
+*/
 public interface InterfazRadio {
 	/**
 	 * constante que permite el cambio de frecuencia en AM
@@ -82,14 +84,31 @@ public interface InterfazRadio {
 	*/
 
 	//Retorna la emisora actual seleccionada (dependiendo si es AM o FM)
+	/**
+	 * Metodo que permite obtener la emisora actual
+	 */
 	public double getEmisora();
 	//Retorna el estado actual de Encendido (true=encendido, false=apagado)
+	/**
+	 * Metodo que permite verificar el estado actual de la radio
+	 */
 	public boolean getEncendido();
 	//Retorna la frecuencia actual AM o FM
-    public String getFrec();
-    //Retorna el valor del Volumen 
-    public int getVolumen();
-    
-    public String toString();
+   /**
+    * Metodo que permite obtener la frecuencia actual
+    */
+public String getFrec();
+   //Retorna el valor del Volumen 
+   /**
+    * Metodo que permite mostar el volumen que tiene la
+    * radio al momento de ser utilizado 
+    */
+public int getVolumen();
+   
+ /**
+ * El metodo toString permite hacer una cadena para
+ * su representacion 
+ */
+public String toString();
 
 }
