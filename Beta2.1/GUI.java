@@ -32,8 +32,9 @@ public class GUI extends JFrame {
  	private int song=0;
 	private FloatControl gainControl;
 	private int last;
-	private boolean reset;
 	private boolean save;
+	//NEW
+	private boolean Encendido;
 
 	/**
 	 * Launch the application.
@@ -44,7 +45,7 @@ public class GUI extends JFrame {
 	 * Create the frame.
 	 */
 	public GUI() throws Exception{
-		reset = false;
+		Encendido = false;
 		Radio nRadio = new Radio();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 810, 260);
@@ -77,7 +78,7 @@ public class GUI extends JFrame {
 		}
 		catch(IOException e)
 		{
-			System.out.println("ERROR 0001: No se encontraron los archivos, asegurese de ubicar la carpeta Content junto a las clases");
+			System.out.println("ERROR 0001: No se encontraron los archivos, asegurese de ubicar la carpeta Content junto a los .class");
 		}
 		gainControl = (FloatControl) clip[song].getControl(FloatControl.Type.MASTER_GAIN);
 		gainControl.setValue(-10);
@@ -92,16 +93,18 @@ public class GUI extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				nRadio.encenderApagar();
 				try{
-				if(!nRadio.getEncendido()){
-					clip[song].stop();
-					txtRadio.setBackground(Color.darkGray);
-					txtRadio.setText(" ");
-				}
-				if(nRadio.getEncendido()){
-					clip[song].start();
-					txtRadio.setBackground(Color.green);
-					txtRadio.setText("      "+nRadio.getNum()+" "+nRadio.getFrec());
-				}
+					if(Encendido){
+						clip[song].stop();
+						txtRadio.setBackground(Color.darkGray);
+						txtRadio.setText(" ");
+						Encendido=false;
+					}
+					else{
+						clip[song].start();
+						txtRadio.setBackground(Color.green);
+						txtRadio.setText("      "+nRadio.getNum()+" "+nRadio.getFrec());
+						Encendido=true;
+					}
 				}
 				catch(Exception ex){
 				}
@@ -116,7 +119,7 @@ public class GUI extends JFrame {
 		btnAmfm.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(nRadio.getEncendido()){
+				if(Encendido){
 					nRadio.cambiarFrec();
 					txtRadio.setText("      "+nRadio.getNum()+" "+nRadio.getFrec());
 					music(nRadio.getNum(), nRadio.getFrec());
@@ -134,7 +137,7 @@ public class GUI extends JFrame {
 		buttonLtoR.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(nRadio.getEncendido()){
+				if(Encendido){
 					nRadio.adelantarEmisora();
 					txtRadio.setText("      "+nRadio.getNum()+" "+nRadio.getFrec());
 					music(nRadio.getNum(), nRadio.getFrec());
@@ -152,7 +155,7 @@ public class GUI extends JFrame {
 		buttonRtoL.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(nRadio.getEncendido()){
+				if(Encendido){
 					nRadio.atrasarEmisora();
 					txtRadio.setText("      "+nRadio.getNum()+" "+nRadio.getFrec());
 					music(nRadio.getNum(), nRadio.getFrec());
@@ -324,7 +327,7 @@ public class GUI extends JFrame {
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				nRadio.subirVolumen();
-				if(nRadio.getEncendido()){
+				if(Encendido){
 					FloatControl gainControl = (FloatControl) clip[song].getControl(FloatControl.Type.MASTER_GAIN);
 					if(gainControl.getValue()<=2)
 						gainControl.setValue((gainControl.getValue()+2));
@@ -343,7 +346,7 @@ public class GUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				nRadio.bajarVolumen();
-				if(nRadio.getEncendido()){
+				if(Encendido){
 				FloatControl gainControl = (FloatControl) clip[song].getControl(FloatControl.Type.MASTER_GAIN);
 				if(gainControl.getValue()>=-18)
 					gainControl.setValue((gainControl.getValue()-2));
@@ -396,7 +399,7 @@ public class GUI extends JFrame {
 		Save.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(nRadio.getEncendido()){
+				if(Encendido){
 					save = true;
 					Save.setForeground(Color.red);
 					System.out.println("Boton Save esta activado");
@@ -417,7 +420,7 @@ public class GUI extends JFrame {
 	 */
 	public void btnControl(int posicion, Radio nRadio)
 	{
-		if(nRadio.getEncendido()){
+		if(Encendido){
 			if(save) {
 				double nEmisora=Double.parseDouble(nRadio.getNum());
 				nRadio.guardarEmisora(nEmisora, posicion);
@@ -474,6 +477,8 @@ public class GUI extends JFrame {
 				clip[last].stop();
 				clip[song].start();
 				last=song;
+				if(!clip[song].isRunning())
+					clip[song].setFramePosition(0);
 			}
 		}
 }

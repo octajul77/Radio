@@ -6,7 +6,7 @@
 
 /**
  *
- * @author Diego Morales, Julio Gonzalez, Diego Sosa
+ * @author Diego
  */
 public class Radio implements InterfazRadio{
 	private boolean Encendido;
@@ -76,6 +76,7 @@ public class Radio implements InterfazRadio{
 		if (Encendido){
 			if(Frec == "AM"){
 				AM = emisora;
+				if(emisora==1.0)
 			}
 			else{
 				FM = emisora;
@@ -156,24 +157,6 @@ public class Radio implements InterfazRadio{
 	}
 
     /**
-     * Carga la emisora seleccionada dependiendo del boton oprimido y frecuencia.
-     * @param posicion Numero de boton seleccionado a traves de la interfaz grafica
-     * @return El numero de la emisora cargado
-     */
-    public double cEmisora(int posicion){
-		if(Encendido){
-			System.out.println("Cargando Emisora");
-			if (Frec=="AM"){
-				nEmisora = AMArray[posicion-1];
-			}
-			else{
-				nEmisora = FMArray[posicion-1];
-			}
-		}
-		return nEmisora;
-	}
-
-    /**
      * Imprime en consola que el volumen sube
      */
         @Override
@@ -193,13 +176,22 @@ public class Radio implements InterfazRadio{
 		}
 	}
 
-    /**
-     * Retorna el estado de la radio (encendido o apagado)
-     * @return Estado de la radio como true o false
-     *
+	 /**
+     * Carga la emisora seleccionada dependiendo del boton oprimido y frecuencia.
+     * @param posicion Numero de boton seleccionado a traves de la interfaz grafica
+     * @return El numero de la emisora cargado
      */
-    public boolean getEncendido(){
-		return Encendido;
+    public double cEmisora(int posicion){
+		if(Encendido){
+			System.out.println("Cargando Emisora");
+			if (Frec=="AM"){
+				nEmisora = AMArray[posicion-1];
+			}
+			else{
+				nEmisora = FMArray[posicion-1];
+			}
+		}
+		return nEmisora;
 	}
 
     /**
@@ -215,18 +207,7 @@ public class Radio implements InterfazRadio{
 		}
 	}
 
-    /**
-     * Retorna un 1 o 0 dependiendo de si el String ingresado corresponde o no a AM
-     * @param f Frecuencia
-     * @return 1 0 0
-     */
-    public int vFrecAM(String f)
-	{
-		if (f=="AM"){
-			return 1;
-		}
-		return 0;
-	}
+
 
     /**
      * Retorna el numero de emisora, dependiendo de si es Am o FM.
@@ -249,5 +230,20 @@ public class Radio implements InterfazRadio{
 			return "       Radio 2DJ";
 		}
 	}
+
+	 /* Método utilizado para pruebas en JUnit
+	 /**
+     * Retorna un 1 o 0 dependiendo de si el String ingresado corresponde o no a AM
+     * @param f Frecuencia
+     * @return 1 0 0
+
+    public int vFrecAM(String f)
+	{
+		if (f=="AM"){
+			return 1;
+		}
+		return 0;
+	}
+	*/
 
 }
