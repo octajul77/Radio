@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -7,14 +8,18 @@ import javax.swing.JToggleButton;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.*;
+
 import javax.swing.*;
+
 import java.net.URL;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.*;
+
 import javax.sound.sampled.*;
 /**
  * @author Julio Gonzalez, Diego Morales, Diego Sosa
@@ -22,6 +27,10 @@ import javax.sound.sampled.*;
  */
 public class GUI extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel txtRadio, titleRadio;
 	private JButton Save;
@@ -77,8 +86,8 @@ public class GUI extends JFrame {
 		{
 			System.out.println("ERROR 0001: No se encontraron los archivos, asegurese de ubicar la carpeta Content junto a los .class");
 		}
-		gainControl = (FloatControl) clip[song].getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-10);
+		/*gainControl = (FloatControl) clip[song].getControl(FloatControl.Type.MASTER_GAIN);
+		gainControl.setValue(-10);*/
 
 
 
@@ -160,7 +169,7 @@ public class GUI extends JFrame {
 		buttonRtoL.setBounds(685, 60, 50, 80);
 		contentPane.add(buttonRtoL);
 
-		JButton btn1 = new JButton("1");
+		nBtn btn1 = new nBtn("1");
 		btn1.setFont(new Font("Arial", Font.BOLD, 16));
 		btn1.setBackground(Color.LIGHT_GRAY);
 		btn1.addMouseListener(new MouseAdapter() {
@@ -173,7 +182,7 @@ public class GUI extends JFrame {
 		btn1.setBounds(14, 165, 55, 50);
 		contentPane.add(btn1);
 
-		JButton btn2 = new JButton("2");
+		nBtn btn2 = new nBtn("2");
 		btn2.setFont(new Font("Arial", Font.BOLD, 16));
 		btn2.setBackground(Color.LIGHT_GRAY);
 		btn2.addMouseListener(new MouseAdapter() {
@@ -186,7 +195,7 @@ public class GUI extends JFrame {
 		btn2.setBounds(79, 165, 55, 50);
 		contentPane.add(btn2);
 
-		JButton btn3 = new JButton("3");
+		nBtn btn3 = new nBtn("3");
 		btn3.setFont(new Font("Arial", Font.BOLD, 16));
 		btn3.setBackground(Color.LIGHT_GRAY);
 		btn3.addMouseListener(new MouseAdapter() {
@@ -199,7 +208,7 @@ public class GUI extends JFrame {
 		btn3.setBounds(144, 165, 55, 50);
 		contentPane.add(btn3);
 
-		JButton btn4 = new JButton("4");
+		nBtn btn4 = new nBtn("4");
 		btn4.setFont(new Font("Arial", Font.BOLD, 16));
 		btn4.setBackground(Color.LIGHT_GRAY);
 		btn4.addMouseListener(new MouseAdapter() {
@@ -212,7 +221,7 @@ public class GUI extends JFrame {
 		btn4.setBounds(209, 165, 55, 50);
 		contentPane.add(btn4);
 
-		JButton btn5 = new JButton("5");
+		nBtn btn5 = new nBtn("5");
 		btn5.setFont(new Font("Arial", Font.BOLD, 16));
 		btn5.setBackground(Color.LIGHT_GRAY);
 		btn5.addMouseListener(new MouseAdapter() {
@@ -225,7 +234,7 @@ public class GUI extends JFrame {
 		btn5.setBounds(274, 165, 55, 50);
 		contentPane.add(btn5);
 
-		JButton btn6 = new JButton("6");
+		nBtn btn6 = new nBtn("6");
 		btn6.setFont(new Font("Arial", Font.BOLD, 16));
 		btn6.setBackground(Color.LIGHT_GRAY);
 		btn6.addMouseListener(new MouseAdapter() {
@@ -238,7 +247,7 @@ public class GUI extends JFrame {
 		btn6.setBounds(339, 165, 55, 50);
 		contentPane.add(btn6);
 
-		JButton btn7 = new JButton("7");
+		nBtn btn7 = new nBtn("7");
 		btn7.setFont(new Font("Arial", Font.BOLD, 16));
 		btn7.setBackground(Color.LIGHT_GRAY);
 		btn7.addMouseListener(new MouseAdapter() {
@@ -251,7 +260,7 @@ public class GUI extends JFrame {
 		btn7.setBounds(404, 165, 55, 50);
 		contentPane.add(btn7);
 
-		JButton btn8 = new JButton("8");
+		nBtn btn8 = new nBtn("8");
 		btn8.setFont(new Font("Arial", Font.BOLD, 16));
 		btn8.setBackground(Color.LIGHT_GRAY);
 		btn8.addMouseListener(new MouseAdapter() {
@@ -264,7 +273,7 @@ public class GUI extends JFrame {
 		btn8.setBounds(469, 165, 55, 50);
 		contentPane.add(btn8);
 
-		JButton btn9 = new JButton("9");
+		nBtn btn9 = new nBtn("9");
 		btn9.setFont(new Font("Arial", Font.BOLD, 16));
 		btn9.setBackground(Color.LIGHT_GRAY);
 		btn9.addMouseListener(new MouseAdapter() {
@@ -277,7 +286,7 @@ public class GUI extends JFrame {
 		btn9.setBounds(534, 165, 55, 50);
 		contentPane.add(btn9);
 
-		JButton btn10 = new JButton("10");
+		nBtn btn10 = new nBtn("10");
 		btn10.setFont(new Font("Arial", Font.BOLD, 16));
 		btn10.setBackground(Color.LIGHT_GRAY);
 		btn10.addMouseListener(new MouseAdapter() {
@@ -290,7 +299,7 @@ public class GUI extends JFrame {
 		btn10.setBounds(599, 165, 55, 50);
 		contentPane.add(btn10);
 
-		JButton btn11 = new JButton("11");
+		nBtn btn11 = new nBtn("11");
 		btn11.setBackground(Color.LIGHT_GRAY);
 		btn11.setFont(new Font("Arial", Font.BOLD, 16));
 		btn11.addMouseListener(new MouseAdapter() {
@@ -303,7 +312,7 @@ public class GUI extends JFrame {
 		btn11.setBounds(664, 165, 55, 50);
 		contentPane.add(btn11);
 
-		JButton btn12 = new JButton("12");
+		nBtn btn12 = new nBtn("12");
 		btn12.setBackground(Color.LIGHT_GRAY);
 		btn12.setFont(new Font("Arial", Font.BOLD, 16));
 		btn12.addMouseListener(new MouseAdapter() {
@@ -322,14 +331,18 @@ public class GUI extends JFrame {
 		btnPlus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				nRadio.subirVolumen();
+<<<<<<< HEAD
 				if(nRadio.getEncendido()){
+=======
+				/*if(Encendido){
+>>>>>>> origin/master
 					FloatControl gainControl = (FloatControl) clip[song].getControl(FloatControl.Type.MASTER_GAIN);
 					if(gainControl.getValue()<=2)
 						gainControl.setValue((gainControl.getValue()+2));
 					else
 						gainControl.setValue(4);
 				txtRadio.setText("        Volume: "+((int)(gainControl.getValue())+20));
-				}
+				}*/
 
 			}
 		});
@@ -341,14 +354,18 @@ public class GUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				nRadio.bajarVolumen();
+<<<<<<< HEAD
 				if(nRadio.getEncendido()){
+=======
+				/*if(Encendido){
+>>>>>>> origin/master
 				FloatControl gainControl = (FloatControl) clip[song].getControl(FloatControl.Type.MASTER_GAIN);
 				if(gainControl.getValue()>=-18)
 					gainControl.setValue((gainControl.getValue()-2));
 				else
 					gainControl.setValue(-20);
 				txtRadio.setText("        Volume: "+((int)(gainControl.getValue())+20));
-				}
+				}*/
 
 			}
 		});
@@ -476,4 +493,33 @@ public class GUI extends JFrame {
 					clip[song].setFramePosition(0);
 			}
 		}
+}
+class nBtn extends JButton{
+	private double emisoraAM;
+	private double emisoraFM;
+	private String frec;
+	public nBtn(String string)
+	{
+		super(string);
+		emisoraAM = 0.0;
+		emisoraFM = 0.0;
+	}
+	public void setEmisora(double emisora, String frec)
+	{
+		if(frec == "AM")
+		{
+			this.emisoraAM = emisora;
+		} else {
+			this.emisoraFM = emisora; 
+		}	
+	}
+	public double getEmisora(String frec)
+	{
+		if(frec == "AM")
+		{
+			return this.emisoraAM;
+		} else {
+			return this.emisoraFM; 
+		}	
+	}
 }
