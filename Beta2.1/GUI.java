@@ -25,7 +25,7 @@ import javax.sound.sampled.*;
  * @author Julio Gonzalez, Diego Morales, Diego Sosa
  * @version 2.0
  */
-public class GUI extends JFrame {
+public class GUII extends JFrame {
 
 	/**
 	 * 
@@ -51,7 +51,7 @@ public class GUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GUI() throws Exception{
+	public GUII() throws Exception{
 		Radio nRadio = new Radio();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 810, 260);
@@ -337,7 +337,8 @@ public class GUI extends JFrame {
 						gainControl.setValue((gainControl.getValue()+2));
 					else
 						gainControl.setValue(4);
-				txtRadio.setText("        Volume: "+((int)(gainControl.getValue())+20));
+				/*txtRadio.setText("        Volume: "+((int)(gainControl.getValue())+20));*/
+				txtRadio.setText("        Volume: "+((int)(nRadio.getVolumen());
 				}
 
 			}
@@ -356,7 +357,8 @@ public class GUI extends JFrame {
 					gainControl.setValue((gainControl.getValue()-2));
 				else
 					gainControl.setValue(-20);
-				txtRadio.setText("        Volume: "+((int)(gainControl.getValue())+20));
+				/*txtRadio.setText("        Volume: "+((int)(gainControl.getValue())+20));*/
+				txtRadio.setText("        Volume: "+((int)(nRadio.getVolumen());
 				}
 
 			}
