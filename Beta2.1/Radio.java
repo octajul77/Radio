@@ -163,15 +163,12 @@ public class Radio implements InterfazRadio{
      */
         @Override
     public void subirVolumen(){
-		if(Encendido){
-		Volumen=Volumen+1;
-			if(Volumen==24){
-				Volumen=24;
-				}
-			else{
-				Volumen=Volumen*1;
-				}
-			System.out.println("Subir Volumen");
+	if(Encendido){
+		if (Volumen<25)
+			{
+				Volumen+=1;
+			}
+		System.out.println("Subir Volumen");
 		}
 	}
 
@@ -182,15 +179,12 @@ public class Radio implements InterfazRadio{
      */
         @Override
     public void bajarVolumen(){
-		if(Encendido){
-			Volumen=Volumen-1;
-			if(Volumen==0){
-				Volumen=0;
-				}
-			else{
-				Volumen=Volumen*1;
-				}
-			System.out.println("Bajar Volumen");
+	if(Encendido){
+		if (Volumen>0)
+			{
+				Volumen-=1;
+			}
+		System.out.println("Bajar Volumen");
 		}
 	}
 
