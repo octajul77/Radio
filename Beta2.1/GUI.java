@@ -86,7 +86,7 @@ public class GUI extends JFrame {
 			System.out.println("ERROR 0001: No se encontraron los archivos, asegurese de ubicar la carpeta Content junto a los .class");
 		}
 		gainControl = (FloatControl) clip[song].getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-10);
+		gainControl.setValue(-80);
 
 
 
@@ -332,11 +332,11 @@ public class GUI extends JFrame {
 				nRadio.subirVolumen();
 				if(nRadio.getEncendido()){
 					FloatControl gainControl = (FloatControl) clip[song].getControl(FloatControl.Type.MASTER_GAIN);
-					if(gainControl.getValue()<=2)
-						gainControl.setValue((gainControl.getValue()+2));
+					if(gainControl.getValue()<4)
+						gainControl.setValue((gainControl.getValue()+3));
 					else
 						gainControl.setValue(4);
-				/*txtRadio.setText("        Volume: "+((int)(gainControl.getValue())+20));*/
+				txtRadio.setText("        Volume: "+((int)(gainControl.getValue())+20));
 				txtRadio.setText("        Volume: "+((int)(nRadio.getVolumen())));
 				}
 
@@ -352,11 +352,11 @@ public class GUI extends JFrame {
 				nRadio.bajarVolumen();
 				if(nRadio.getEncendido()){
 				FloatControl gainControl = (FloatControl) clip[song].getControl(FloatControl.Type.MASTER_GAIN);
-				if(gainControl.getValue()>=-18)
-					gainControl.setValue((gainControl.getValue()-2));
+				if(gainControl.getValue()>-75)
+					gainControl.setValue((gainControl.getValue()-3));
 				else
-					gainControl.setValue(-20);
-				/*txtRadio.setText("        Volume: "+((int)(gainControl.getValue())+20));*/
+					gainControl.setValue(-75);
+				txtRadio.setText("        Volume: "+((int)(gainControl.getValue())+20));
 				txtRadio.setText("        Volume: "+((int)(nRadio.getVolumen())));
 				}
 
