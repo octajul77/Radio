@@ -12,6 +12,7 @@
 
 public class Radio implements InterfazRadio{
 	private boolean Encendido;
+	private boolean Prueba;
 	private String Frec;
 	private double AM;
 	private double FM;
